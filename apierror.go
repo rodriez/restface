@@ -20,6 +20,7 @@ func (e *ApiError) Cause() []string {
 	return e.Errors
 }
 
+//BadRequest - Return a bad_request error
 func BadRequest(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusBadRequest,
@@ -28,6 +29,7 @@ func BadRequest(err ...string) *ApiError {
 	}
 }
 
+//Forbidden - Return a forbidden error
 func Forbidden(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusForbidden,
@@ -36,6 +38,7 @@ func Forbidden(err ...string) *ApiError {
 	}
 }
 
+//NotFound - Return a not_found error
 func NotFound(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusNotFound,
@@ -44,6 +47,7 @@ func NotFound(err ...string) *ApiError {
 	}
 }
 
+//PaymentRequired - Return a payment_required error
 func PaymentRequired(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusPaymentRequired,
@@ -52,6 +56,7 @@ func PaymentRequired(err ...string) *ApiError {
 	}
 }
 
+//MethodNotAllowed - Return a method_not_allowed error
 func MethodNotAllowed(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusMethodNotAllowed,
@@ -60,6 +65,7 @@ func MethodNotAllowed(err ...string) *ApiError {
 	}
 }
 
+//NotAcceptable - Return a not_acceptable error
 func NotAcceptable(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusNotAcceptable,
@@ -68,6 +74,7 @@ func NotAcceptable(err ...string) *ApiError {
 	}
 }
 
+//ProxyAuthRequired - Return a proxy_auth_required error
 func ProxyAuthRequired(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusProxyAuthRequired,
@@ -76,6 +83,7 @@ func ProxyAuthRequired(err ...string) *ApiError {
 	}
 }
 
+//RequestTimeout - Return a request_time_out error
 func RequestTimeout(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusRequestTimeout,
@@ -84,6 +92,7 @@ func RequestTimeout(err ...string) *ApiError {
 	}
 }
 
+//Conflict - Return a conflict error
 func Conflict(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusConflict,
@@ -92,6 +101,7 @@ func Conflict(err ...string) *ApiError {
 	}
 }
 
+//Gone - Return a gone error
 func Gone(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusGone,
@@ -100,6 +110,7 @@ func Gone(err ...string) *ApiError {
 	}
 }
 
+//LengthRequired - Return a length_required error
 func LengthRequired(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusLengthRequired,
@@ -108,6 +119,7 @@ func LengthRequired(err ...string) *ApiError {
 	}
 }
 
+//PreconditionFailed - Return a precondition_failed error
 func PreconditionFailed(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusPreconditionFailed,
@@ -116,6 +128,7 @@ func PreconditionFailed(err ...string) *ApiError {
 	}
 }
 
+//RequestEntityTooLarge - Return a request_entity_too_large error
 func RequestEntityTooLarge(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusRequestEntityTooLarge,
@@ -124,6 +137,7 @@ func RequestEntityTooLarge(err ...string) *ApiError {
 	}
 }
 
+//RequestURITooLong - Return a request_uri_too_long error
 func RequestURITooLong(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusRequestURITooLong,
@@ -132,6 +146,7 @@ func RequestURITooLong(err ...string) *ApiError {
 	}
 }
 
+//UnsupportedMediaType - Return a unsupported_media_type error
 func UnsupportedMediaType(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusUnsupportedMediaType,
@@ -140,6 +155,7 @@ func UnsupportedMediaType(err ...string) *ApiError {
 	}
 }
 
+//RequestedRangeNotSatisfiable - Return a requested_range_not_satisfiable error
 func RequestedRangeNotSatisfiable(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusRequestedRangeNotSatisfiable,
@@ -148,6 +164,7 @@ func RequestedRangeNotSatisfiable(err ...string) *ApiError {
 	}
 }
 
+//ExpectationFailed - Return a expectation_failed error
 func ExpectationFailed(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusExpectationFailed,
@@ -156,6 +173,7 @@ func ExpectationFailed(err ...string) *ApiError {
 	}
 }
 
+//Teapot - Return a teapot error
 func Teapot(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusTeapot,
@@ -164,6 +182,7 @@ func Teapot(err ...string) *ApiError {
 	}
 }
 
+//MisdirectedRequest - Return a misdirected_request error
 func MisdirectedRequest(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusMisdirectedRequest,
@@ -172,6 +191,7 @@ func MisdirectedRequest(err ...string) *ApiError {
 	}
 }
 
+//UnprocessableEntity - Return a unprocessable_entity error
 func UnprocessableEntity(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusUnprocessableEntity,
@@ -180,6 +200,7 @@ func UnprocessableEntity(err ...string) *ApiError {
 	}
 }
 
+//Locked - Return a locked error
 func Locked(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusLocked,
@@ -188,6 +209,7 @@ func Locked(err ...string) *ApiError {
 	}
 }
 
+//FailedDependency - Return a failed_dependency error
 func FailedDependency(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusFailedDependency,
@@ -196,6 +218,7 @@ func FailedDependency(err ...string) *ApiError {
 	}
 }
 
+//TooEarly - Return a too_early error
 func TooEarly(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusTooEarly,
@@ -204,6 +227,7 @@ func TooEarly(err ...string) *ApiError {
 	}
 }
 
+//UpgradeRequired - Return a upgrade_required error
 func UpgradeRequired(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusUpgradeRequired,
@@ -212,6 +236,7 @@ func UpgradeRequired(err ...string) *ApiError {
 	}
 }
 
+//PreconditionRequired - Return a precondition_required error
 func PreconditionRequired(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusPreconditionRequired,
@@ -220,6 +245,7 @@ func PreconditionRequired(err ...string) *ApiError {
 	}
 }
 
+//TooManyRequests - Return a too_many_requests error
 func TooManyRequests(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusTooManyRequests,
@@ -228,6 +254,7 @@ func TooManyRequests(err ...string) *ApiError {
 	}
 }
 
+//RequestHeaderFieldsTooLarge - Return a XX error
 func RequestHeaderFieldsTooLarge(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusRequestHeaderFieldsTooLarge,
@@ -236,6 +263,7 @@ func RequestHeaderFieldsTooLarge(err ...string) *ApiError {
 	}
 }
 
+//UnavailableForLegalReasons - Return a unavailable_for_legal_reasons error
 func UnavailableForLegalReasons(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusUnavailableForLegalReasons,
@@ -244,6 +272,7 @@ func UnavailableForLegalReasons(err ...string) *ApiError {
 	}
 }
 
+//Unauthorized - Return a unauthorized error
 func Unauthorized(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusUnauthorized,
@@ -252,6 +281,7 @@ func Unauthorized(err ...string) *ApiError {
 	}
 }
 
+//InternalError - Return a internal_server error
 func InternalError(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusInternalServerError,
@@ -260,6 +290,7 @@ func InternalError(err ...string) *ApiError {
 	}
 }
 
+//NotImplemented - Return a not_implemented error
 func NotImplemented(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusNotImplemented,
@@ -268,6 +299,7 @@ func NotImplemented(err ...string) *ApiError {
 	}
 }
 
+//BadGateway - Return a bad_gateway error
 func BadGateway(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusBadGateway,
@@ -276,6 +308,7 @@ func BadGateway(err ...string) *ApiError {
 	}
 }
 
+//ServiceUnavailable - Return a service_unavailable error
 func ServiceUnavailable(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusServiceUnavailable,
@@ -284,6 +317,7 @@ func ServiceUnavailable(err ...string) *ApiError {
 	}
 }
 
+//GatewayTimeout - Return a gateway_timeout error
 func GatewayTimeout(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusGatewayTimeout,
@@ -292,6 +326,7 @@ func GatewayTimeout(err ...string) *ApiError {
 	}
 }
 
+//HTTPVersionNotSupported - Return a http_version_not_supported error
 func HTTPVersionNotSupported(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusHTTPVersionNotSupported,
@@ -300,6 +335,7 @@ func HTTPVersionNotSupported(err ...string) *ApiError {
 	}
 }
 
+//VariantAlsoNegotiates - Return a variant_also_negotiates error
 func VariantAlsoNegotiates(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusVariantAlsoNegotiates,
@@ -308,6 +344,7 @@ func VariantAlsoNegotiates(err ...string) *ApiError {
 	}
 }
 
+//InsufficientStorage - Return a insufficient_storage error
 func InsufficientStorage(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusInsufficientStorage,
@@ -316,6 +353,7 @@ func InsufficientStorage(err ...string) *ApiError {
 	}
 }
 
+//LoopDetected - Return a loop_detected error
 func LoopDetected(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusLoopDetected,
@@ -324,6 +362,7 @@ func LoopDetected(err ...string) *ApiError {
 	}
 }
 
+//NotExtended - Return a not_extended error
 func NotExtended(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusNotExtended,
@@ -332,6 +371,7 @@ func NotExtended(err ...string) *ApiError {
 	}
 }
 
+//NetworkAuthenticationRequired - Return a network_authentication_required error
 func NetworkAuthenticationRequired(err ...string) *ApiError {
 	return &ApiError{
 		StatusCode: http.StatusNetworkAuthenticationRequired,

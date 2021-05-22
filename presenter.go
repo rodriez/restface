@@ -13,6 +13,7 @@ type Presenter struct {
 	Writer http.ResponseWriter
 }
 
+//Present - Write a json body
 func (p *Presenter) Present(body interface{}) {
 	p.Writer.Header().Set("Content-Type", "application/json")
 	p.Writer.WriteHeader(http.StatusOK)
@@ -20,6 +21,7 @@ func (p *Presenter) Present(body interface{}) {
 	json.NewEncoder(p.Writer).Encode(body)
 }
 
+//PresentError - Write a json error
 func (p *Presenter) PresentError(e PresentableError) {
 	p.Writer.Header().Set("Content-Type", "application/json")
 	p.Writer.WriteHeader(e.Code())
