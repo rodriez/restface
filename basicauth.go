@@ -5,17 +5,24 @@ import (
 	"net/http"
 )
 
-type BasicAuthenticator struct {
-	Request   *http.Request
-	ValidUser func(name, pass string) bool
+type basicAuthenticator struct {
+	request   *http.Request
+	userExist func(name, pass string) bool
 }
 
-func (a *BasicAuthenticator) Authenticate() error {
-	user, pass, ok := a.Request.BasicAuth()
+func (a *basicAuthenticator) Authenticate() error {
+	user, pass, ok := a.request.BasicAuth()
 
-	if ok && a.ValidUser(user, pass) {
+	if ok && a.userExist(user, pass) {
 		return nil
 	}
 
 	return errors.New("forbidden")
+}
+
+func NewBasicAuthenticator(req *http.Request, userExist func(name, pass string) bool) Authenticator {
+	return &basicAuthenticator{
+		request:   req,
+		userExist: userExist,
+	}
 }

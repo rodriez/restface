@@ -5,6 +5,10 @@ import (
 	"net/http"
 )
 
+type PresentableError interface {
+	Code() int
+}
+
 type Presenter struct {
 	Writer http.ResponseWriter
 }
@@ -16,8 +20,8 @@ func (p *Presenter) Present(body interface{}) {
 	json.NewEncoder(p.Writer).Encode(body)
 }
 
-func (p *Presenter) PresentError(err *ApiError) {
+func (p *Presenter) PresentError(e PresentableError) {
 	p.Writer.Header().Set("Content-Type", "application/json")
-	p.Writer.WriteHeader(err.StatusCode)
-	json.NewEncoder(p.Writer).Encode(err)
+	p.Writer.WriteHeader(e.Code())
+	json.NewEncoder(p.Writer).Encode(e)
 }
