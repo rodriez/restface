@@ -14,16 +14,16 @@ go get github.com/rodriez/restface
 import "github.com/rodriez/restface"
 
 func Ping(res http.ResponseWriter, req *http.Request) {
-    presenter := restface.Presenter{Writer: res}
+    presenter := restface.NewPresenter(res)
 
     body := make(map[string]bool)
 	body["pong"] = true
 
-    presenter.Present(body)
+    presenter.Present(http.StatusOK, body)
 }
 
 func Error(res http.ResponseWriter, req *http.Request) {
-    presenter := restface.Presenter{Writer: res}
+    presenter := restface.NewPresenter(res)
 
     err := restface.NotFound("Resource not found")
 
@@ -31,14 +31,14 @@ func Error(res http.ResponseWriter, req *http.Request) {
 }
 
 func AuthMiddleware(next http.Handler) http.Handler {
+	validUser := func(name, pass string) bool {
+		return name == "Jhon" && pass == "VeryHardPass"
+	}
+	authenticator := restface.NewBasicAuthenticator(validUser)
+
 	return http.HandlerFunc(
 		func(res http.ResponseWriter, req *http.Request) {
-            validUser := func(name, pass string) bool {
-                return name == "Jhon" && pass == "VeryHardPass"
-            }
-			authenticator := &restface.NewBasicAuthenticator(req, validUser)
-
-			if err := authenticator.Authenticate(); err != nil {
+            if err := authenticator.Authenticate(req); err != nil {
 				presenter := restface.Presenter{Writer: res}
 				presenter.PresentError(restface.Forbidden())
 

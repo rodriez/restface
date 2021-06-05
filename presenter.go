@@ -13,17 +13,38 @@ type Presenter struct {
 	Writer http.ResponseWriter
 }
 
-//Present - Write a json body
-func (p *Presenter) Present(body interface{}) {
-	p.Writer.Header().Set("Content-Type", "application/json")
-	p.Writer.WriteHeader(http.StatusOK)
+func NewPresenter(w http.ResponseWriter) *Presenter {
+	return &Presenter{w}
+}
 
-	json.NewEncoder(p.Writer).Encode(body)
+//Present - Write an http response
+func (p *Presenter) PresentResponse(resp *http.Response) error {
+	for k, _ := range resp.Header {
+		p.Writer.Header().Add(k, resp.Header.Get(k))
+	}
+	p.Writer.WriteHeader(resp.StatusCode)
+
+	body := []byte{}
+	if _, err := resp.Body.Read(body); err != nil {
+		return err
+	}
+
+	p.Writer.Write(body)
+
+	return nil
+}
+
+//Present - Write a 200 ok and json body
+func (p *Presenter) Present(statusCode int, body interface{}) error {
+	p.Writer.Header().Set("Content-Type", "application/json")
+	p.Writer.WriteHeader(statusCode)
+
+	return json.NewEncoder(p.Writer).Encode(body)
 }
 
 //PresentError - Write a json error
-func (p *Presenter) PresentError(e PresentableError) {
+func (p *Presenter) PresentError(e PresentableError) error {
 	p.Writer.Header().Set("Content-Type", "application/json")
 	p.Writer.WriteHeader(e.Code())
-	json.NewEncoder(p.Writer).Encode(e)
+	return json.NewEncoder(p.Writer).Encode(e)
 }
